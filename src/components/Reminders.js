@@ -34,7 +34,7 @@ export class Reminders extends React.Component {
     render() {
         return (
             <div id="Reminders">
-                <div className="card-deck p-3">
+                <div className="listings-container p-3">
                     <ToastContainer autoClose={false} draggablePercent={50} position={toast.POSITION.BOTTOM_RIGHT} />
                     {this.props.reminders.map((reminder) => {
                         return <Reminder key={reminder.id} {...reminder}/>

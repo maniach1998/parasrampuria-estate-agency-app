@@ -5,6 +5,7 @@ import { css } from 'glamor';
 import { toast } from 'react-toastify';
 import { startRemoveReminder, startEditReminder } from '../actions/reminders';
 import moment from 'moment';
+import Notification from '../images/notification.png';
 import 'react-toastify/dist/ReactToastify.css';
 
 const notifyRemoved = (name) => (
@@ -38,10 +39,13 @@ const notifySeen = (seen) => (
 )
 
 const Reminder = ({ dispatch, id, name, listingType, partyName, contact, createdAt, startDate, endDate, seen }) => (
-    <div className="card listing-card shadow-sm">
+    <div className="listing-card shadow-sm">
         <div className="listing-card-name card-title">
             {name}
             <div className="float-right">
+                {(moment(endDate).subtract(1, 'month') <= moment() && seen === false) ? (
+                    <img src={Notification} alt="Notification" style={{ width: 30, marginRight: 20 }} />
+                ) : (<div></div>)}
                 <Link to={`/editRem/${id}`} style={{ color: '#C94343', textDecoration: 'underline', fontSize: 20, fontWeight: 'normal', marginRight: 20 }}>Edit</Link>
                 <button className="btn border shadow-sm" onClick={() => {
                         dispatch(startRemoveReminder({ id }));
@@ -58,7 +62,7 @@ const Reminder = ({ dispatch, id, name, listingType, partyName, contact, created
                 </div>
                 
         </div>
-        <div className="card-body listing-card-body">
+        <div className="d-flex justify-content-between listing-card-body">
             <div>
                 <span className="listing-card-heading">TYPE :</span>{listingType}
             </div>

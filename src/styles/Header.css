@@ -96,6 +96,16 @@
     transition-duration: 0.2s;
 }
 
+.reminder-card {
+    background-color: #fff;
+    font-size: 1.1em;
+    padding: 0.6em 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #009EFD;
+    transition-duration: 0.2s;
+}
+
 .listing-card:hover {
     transform: scale(1.01);
     border: 2px solid #C94343;
