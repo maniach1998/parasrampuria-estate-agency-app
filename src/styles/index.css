@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Raleway Regular";
+  src: url('./fonts/Raleway-Regular.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway Bold";
+  src: url('./fonts/Raleway-Bold.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway Medium";
+  src: url('./fonts/Raleway-Medium.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway Thin";
+  src: url('./fonts/Raleway-Thin.ttf') format("truetype");
+}
+
+body {
+  margin: 0;
+  font-family: "Raleway Regular";
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

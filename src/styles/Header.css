@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+#Header {
+    background-color: #F2F2F2;
+    width: 100%;
+    height: 140px;
+    border-bottom: 5px solid #C94343;
+}
+
+#Listings {
+    margin-top: 20px;
+}
+
+#Filters {
+    position: static;
+    width: 215px;
+}
+
+.navbar-container {
+    margin: 10px 20px 10px 0;
+    border: 1px solid #707070;
+    padding: 0.5em;
+    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.15);
+}
+
+.navbar-container img {
+    transition-duration: 1s;
+}
+
+.navbar-container img:hover {
+    transform: scale(1.15);
+    transition-duration: 0.3s; 
+}
+
+.filters-container {
+    margin: 10px 0 10px 10px;
+    border: 1px solid #707070;
+    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.15);
+}
+
+.company-name {
+    color: #C94343;
+    font-size: 3em;
+    margin-bottom: 0;
+}
+
+.company-name-desc {
+    color: #707070;
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.filter-head {
+    color: #C94343;
+    margin: 0.6em;
+    font-size: 1.3em;
+}
+
+.filter-content {
+    font-size: 1.15em;
+}
+
+#filter-line {
+    border: 0.5px solid #C94343;
+    margin: 0px 15px;
+}
+
+#search-bar {
+    border: 2px solid #009EFD;
+    padding: 0.5em;
+    width: 23em;
+    margin-left: 88px;
+}
+
+#search-bar::placeholder {
+    color: #000;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.listings-head {
+    font-family: "Raleway Bold";
+    font-size: 1.4em;
+    letter-spacing: 0.7px;
+}
+
+.listing-card {
+    background-color: #fff;
+    font-size: 1.1em;
+    padding: 0.6em 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #009EFD;
+    transition-duration: 0.2s;
+}
+
+.listing-card:hover {
+    transform: scale(1.01);
+    border: 2px solid #C94343;
+    transition-duration: 0.3s;
+}
+
+.listing-card-name {
+    font-size: 1.8em;
+    font-family: "Raleway Bold";
+    color: #C94343;
+    margin-bottom: 10px;
+}
+
+.listing-card-heading {
+    font-family: "Raleway Bold";
+}
+
+.listing-card-options {
+    font-family: "Raleway Regular";
+    display: flex;
+    align-items: center;
+    font-size: 0.6em;
+    color: #000;
+}
+
+/* .listing-card-body span {
+    margin-right: 0.5em;
+} */
+
+/* .listing-card-body span + span {
+    margin-left: 2em;
+} */
+
+input[type=checkbox] {
+    margin: 10px;
+}
+
+input[type=checkbox]:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: #fff;
+    transition-duration: 1s;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #C94343;
+    transition-duration: 0.3s;
+}
+
+.add-listing-container {
+    background-color: #F2F2F2;
+}
+
+.newlisting-header {
+    background-color: #3C3C3C;
+}
+
+.heading {
+    font-family: "Raleway Bold";
+    font-size: 2em;
+    color: #C94343;
+    padding: 0.5em 1em 0.5em 1.1em;
+}
+
+.heading a {
+    margin-top: 5px;
+}
+
+.form-section-heading {
+    font-family: "Raleway Bold";
+    font-size: 1.1em;
+}
+
+input[type="text"] {
+    border: 2px solid #009EFD;
+}
+
+input[type="radio"] {
+    border: 2px solid #009EFD;
+}
+
+.listing-name {
+    width: 80em;
+    border: 2px solid #009EFD;
+}
+
+form > div > div {
+    margin-top: 10px;
+}
+
+.need-options input+input {
+    margin: 0em 1.5em 0em 14.6em;
+}
+
+.need-options input:first-of-type {
+    margin: 0em 1.5em 0em 8em;
+}
+
+.type-options div > div {
+    margin: 0em 6em;
+}
+
+.type-options div > div:nth-of-type(2) {
+    margin: 0em 7.7em;
+}
+
+.type-options div > div:nth-of-type(2) {
+    margin: 0em 7.9em;
+}
+
+.type-options {
+    display: flex;
+    justify-content: start;
+    align-content: center;
+    text-align: center;
+}
+
+.price-section span {
+    margin-left: 1em;
+}
+
+.price-options input[type="text"] {
+    margin-left: 6.5em;
+    width: 15em;
+}
+
+.area-section span {
+    margin-left: 1em;
+}
+
+.area-options input {
+    margin-left: 2.25em;
+    width: 15em;
+}
+
+.agency-section span {
+    margin-left: 1em;
+}
+
+.agency-options input {
+    margin: 0em 2em 0em 2.3em;
+}
+
+.party-name-section {
+    margin-left: 1em;
+}
+
+.party-name-options input {
+    margin-left: 2.8em;
+    width: 15em;
+}
+
+.contact-section {
+    margin-left: 1em;
+}
+
+.contact-options input {
+    margin-left: 4.65em;
+    width: 15em;
+}
+
+.email-section {
+    margin-left: 1em;
+}
+
+.email-options input {
+    margin-left: 6.45em;
+    width: 15em;
+}
+
+.web-section {
+    margin-left: 1em;
+}
+
+.web-options input {
+    margin-left: 1em;
+}
+
+.completed-section {
+    margin-left: 1em;
+}
+
+.completed-options input {
+    margin-left: 1.25em;
+}
+
+.custom-btn {
+    font-family: "Raleway Bold";
+    color: #C94343;
+    font-size: 1.05em;
+    background-color: #fff;
+    padding: 0.2em 1.5em;
+    margin: 12px 0px 15px 0px;
+}
+

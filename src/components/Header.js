@@ -1,23 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { startLogout } from '../actions/auth';
+import logo from '../images/logo.png';
+import '../styles/Header.css';
 
-export const Header = ({ startLogout }) => (
-  <header className="header">
-    <div className="content-container">
-      <div className="header__content">
-        <Link className="header__title" to="/dashboard">
-          <h1>Boilerplate</h1>
-        </Link>
-        <button className="button button--link" onClick={startLogout}>Logout</button>
+const Header = () => {
+  return (
+    <div className="d-flex justify-content-center align-items-center" id="Header">
+      <div id="Header-logo">
+        <img src={logo} alt="PEA-logo" style={{ height: 120 }} />
+      </div>
+      <div id="Header-content">
+        <p className="company-name">Parasrampuria</p>
+        <p className="company-name-desc">ESTATE AGENCY</p>
       </div>
     </div>
-  </header>
-);
+  );
+}
 
-const mapDispatchToProps = (dispatch) => ({
-  startLogout: () => dispatch(startLogout())
-});
-
-export default connect(undefined, mapDispatchToProps)(Header);
+export default Header;

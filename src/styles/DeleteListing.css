@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: #fff;
+    transition-duration: 1s;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #C94343;
+    transition-duration: 0.3s;
+}
+
+.delete-listing-container {
+    background-color: #F2F2F2;
+}
+
+.deletelisting-header {
+    background-color: #3C3C3C;
+}
+
+.heading {
+    font-family: "Raleway Bold";
+    font-size: 2em;
+    color: #C94343;
+    padding: 0.5em 1em 0.5em 1.1em;
+}
+
+.heading a {
+    margin-top: 5px;
+}
+
+.search-bar-section button {
+    background-color: #fff;
+    border: 2px solid #C94343;
+    padding: 0.5em 1em;
+    margin-left: 20px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.search-bar-section button:hover {
+    background-color: #fff;
+    border: 2px solid #009EFD;
+    padding: 0.5em 1em;
+    margin-left: 20px;
+    transition-duration: 0.8s;
+    transition-timing-function: ease-in-out;
+}
+
+.top-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7em 1em 0.7em 0em;
+}
+
+.top-message .message {
+    margin-left: 2em;
+    font-size: 1.2em;
+}

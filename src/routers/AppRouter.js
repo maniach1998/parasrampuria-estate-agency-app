@@ -1,24 +1,34 @@
 import React from 'react';
-import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
-import DashboardPage from '../components/DashboardPage';
-import NotFoundPage from '../components/NotFoundPage';
+import HomePage from '../components/HomePage';
+import DeleteListingPage from '../components/DeleteListingPage';
+import AddListingPage from '../components/AddListingPage';
+import EditListingPage from '../components/EditListingPage';
+import CompletedPage from '../components/CompletedPage';
+import RemindersPage from '../components/RemindersPage';
 import LoginPage from '../components/LoginPage';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
+import AddReminderPage from '../components/AddReminderPage';
+import EditReminderPage from '../components/EditReminderPage';
+
 
 export const history = createHistory();
 
+
 const AppRouter = () => (
-  <Router history={history}>
-    <div>
-      <Switch>
-        <PublicRoute path="/" component={LoginPage} exact={true} />
-        <PrivateRoute path="/dashboard" component={DashboardPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </div>
-  </Router>
+    <Router history={history}>
+        <Switch>
+            <Route path="/" component={LoginPage} exact={true} />
+            <Route path="/home" component={HomePage} />
+            <Route path="/add" component={AddListingPage} />
+            <Route path="/edit/:id" component={EditListingPage} />
+            <Route path="/delete" component={DeleteListingPage} />
+            <Route path="/success" component={CompletedPage} />
+            <Route path="/reminders" component={RemindersPage} />
+            <Route path="/addReminder" component={AddReminderPage} />
+            <Route path="/editRem/:id" component={EditReminderPage} />
+        </Switch>
+    </Router>
 );
 
 export default AppRouter;

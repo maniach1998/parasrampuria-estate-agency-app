@@ -1,19 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
+import GoogleIcon from '../images/GoogleIcon.svg';
+import Logo from '../images/logo.png';
+import '../styles/LoginPage.css';
 
 export const LoginPage = ({ startLogin }) => (
-  <div className="box-layout">
-    <div className="box-layout__box">
-      <h1 className="box-layout__title">Boilerplate</h1>
-      <p>Tag line for app.</p>
-      <button className="button" onClick={startLogin}>Login with Google</button>
+    <div>
+        <div className="login-container">
+            <img alt="Logo" id="company-logo" src={Logo} style={{ width: 400 }}></img>
+            <div className="button-container">
+                <button onClick={startLogin} className="btn custom-btn border shadow-sm">Login with <img alt="googleIcon" src={GoogleIcon} style={{ width: 30, marginLeft: 5 }}></img></button>
+            </div>
+        </div>
     </div>
-  </div>
 );
 
-const mapDispatchToProps = (dispatch) => ({
-  startLogin: () => dispatch(startLogin())
+const matchDispatchToProps = (dispatch) => ({
+    startLogin: () => dispatch(startLogin())
 });
 
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+export default connect(undefined, matchDispatchToProps)(LoginPage);
