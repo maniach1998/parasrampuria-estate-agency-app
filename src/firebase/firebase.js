@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 
-var firebaseConfig = {
+var config = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.FIREBASE_DATABASE_URL,
@@ -10,7 +10,7 @@ var firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
