@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { startSetListings } from './actions/listings';
 import { startSetReminders } from './actions/reminders';
 import LoadingScreen from './components/LoadingScreen';
+import ErrorScreen from './components/ErrorScreen';
 import './styles/index.css';
 import AppRouter, { history } from './routers/AppRouter';
 import * as serviceWorker from './serviceWorker';
@@ -22,7 +23,7 @@ const jsx = (
 
 const notify = () => (
     toast(`✌🏻Successfully loaded listings`, { 
-        autoClose: 5000, 
+        autoClose: 8000, 
         position: toast.POSITION.TOP_RIGHT,
         className: css({
             backgroundColor: 'rgb(255,255,255)'
@@ -56,6 +57,8 @@ firebase.auth().onAuthStateChanged((user) => {
             if (history.location.pathname === '/') {
                 history.push('/home');
             }
+        }).catch(() => {
+            ReactDOM.render(<ErrorScreen />, document.getElementById('app'));
         });
     } else {
         renderApp();
