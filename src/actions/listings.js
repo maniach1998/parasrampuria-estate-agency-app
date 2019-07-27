@@ -48,9 +48,6 @@ export const startAddExpense = (listingData = {}) => {
                     }));
                 });
             }
-            else {
-                console.log('Not a rental type');
-            }
     };
 };
 

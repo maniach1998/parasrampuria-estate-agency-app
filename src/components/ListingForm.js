@@ -202,12 +202,12 @@ export default class ListingForm extends React.Component {
                                 </div>
                                 <div className="col need-options">
                                 {/* Need input */}
-                                    <input type="radio" name="Need" value="To Rent" onChange={this.onNeedChange} checked={this.state.need === "To Rent"} /> To Rent
-                                    <input type="radio" name="Need" value="For Rent" onChange={this.onNeedChange} checked={this.state.need === "For Rent"} /> For Rent
+                                    <input type="radio" name="Need" value="Rent Enquiry" onChange={this.onNeedChange} checked={this.state.need === "Rent Enquiry"} /> Rent Enquiry
+                                    <input type="radio" name="Need" value="Available for Rent" onChange={this.onNeedChange} checked={this.state.need === "Available for Rent"} /> Available for Rent
                                     <input type="radio" name="Need" value="Sell" onChange={this.onNeedChange} checked={this.state.need === "Sell"} /> Sell
                                     <input type="radio" name="Need" value="Buy" onChange={this.onNeedChange} checked={this.state.need === "Buy"} /> Buy
                                 </div>
-                                {this.state.need === "To Rent" || this.state.need === "For Rent" ? (
+                                {this.state.need === "Rent Enquiry" || this.state.need === "Available for Rent" ? (
                                 <div style={{ marginLeft: 15 }}>
                                     <div>
                                         Start Date:

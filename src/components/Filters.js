@@ -110,8 +110,8 @@ class Filters extends React.Component {
                             style={{ marginLeft: 10, marginRight: 10, width: 182 }}
                             onChange={this.needSelected}
                             >
-                                <option value="To Rent">To Rent</option>
-                                <option value="For Rent">For Rent</option>
+                                <option value="Rent Enquiry">Rent Enquiry</option>
+                                <option value="Available for Rent">Available for Rent</option>
                                 <option value="Sell">Sell</option>
                                 <option value="Buy">Buy</option>
                             </select><br></br>
