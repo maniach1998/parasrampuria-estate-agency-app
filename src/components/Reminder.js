@@ -23,66 +23,85 @@ const notifyRemoved = (name) => (
     })
 )
 
-const notifySeen = (seen) => (
-    toast(`Marked as ${seen ? 'Read': 'Unread'}`, {
+const notifySeen = (name, seen) => (
+    toast(`✌🏻Marked '${name}' as ${seen ? 'Read': 'Unread'}`, {
+        autoClose: 5000,
         className: css({
-            backgroundColor: 'rgb(252,236,231)'
+            backgroundColor: 'rgb(232,251,240)'
         }),
         bodyClassName: css({
             fontFamily: 'Raleway Medium',
-            color: 'rgb(180,64,38)'
+            color: 'rgb(42,100,71)'
         }),
         progressClassName: css({
-            background: 'rgb(237,98,64)'
+            background: 'rgb(93,176,130)'
         })
     })
 )
 
-const Reminder = ({ dispatch, id, name, listingType, partyName, contact, createdAt, startDate, endDate, seen }) => (
-    <div className="listing-card shadow-sm">
-        <div className="listing-card-name card-title">
-            {name}
-            <div className="float-right">
-                {(moment(endDate).subtract(1, 'month') <= moment() && seen === false) ? (
-                    <img src={Notification} alt="Notification" style={{ width: 30, marginRight: 20 }} />
-                ) : (<div></div>)}
-                <Link to={`/editRem/${id}`} style={{ color: '#C94343', textDecoration: 'underline', fontSize: 20, fontWeight: 'normal', marginRight: 20 }}>Edit</Link>
-                <button className="btn border shadow-sm" onClick={() => {
-                        dispatch(startRemoveReminder({ id }));
-                        notifyRemoved(name);
-                }}>X</button>
-            </div>
-        </div>
-        <div className="d-flex align-items-center justify-content-center">
-                <div className="d-flex mr-2 align-items-center">
-                    <input type="checkbox" checked={seen} className="align-items-center" />Seen
+class Reminder extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            seen: props.seen
+        };
+    }
+
+    render() {
+        const { dispatch, id, name, listingType, partyName, contact, createdAt, startDate, endDate, seen } = this.props;
+        return (
+            <div className="listing-card shadow-sm">
+                <div className="listing-card-name card-title">
+                    {name}
+                    <div className="float-right">
+                        {(moment(endDate).subtract(1, 'month') <= moment() && seen === false) ? (
+                            <img src={Notification} alt="Notification" style={{ width: 30, marginRight: 20 }} />
+                        ) : (<div></div>)}
+                        <Link to={`/editRem/${id}`} style={{ color: '#C94343', textDecoration: 'underline', fontSize: 20, fontWeight: 'normal', marginRight: 20 }}>Edit</Link>
+                        <button className="btn border shadow-sm" onClick={() => {
+                                dispatch(startRemoveReminder({ id }));
+                                notifyRemoved(name);
+                        }}>X</button>
+                    </div>
                 </div>
-                <div className="mr-3">
-                    <span className="listing-card-heading" style={{ color: '#C94343' }}>Due:&nbsp;</span> {moment(endDate).fromNow()}
+                <div className="d-flex align-items-center justify-content-center">
+                        <div className="d-flex mr-2 align-items-center">
+                            <input type="checkbox" defaultChecked={this.state.seen} className="align-items-center" onClick={() => {
+                                const seen = !this.state.seen;
+                                dispatch(startEditReminder(id, { seen }));
+                                this.setState({ seen });
+                                notifySeen(name, seen);
+                            }} />Seen
+                        </div>
+                        <div className="mr-3">
+                            <span className="listing-card-heading" style={{ color: '#C94343' }}>Due:&nbsp;</span> {moment(endDate).fromNow()}
+                        </div>
+                        
                 </div>
-                
-        </div>
-        <div className="d-flex justify-content-between listing-card-body">
-            <div>
-                <span className="listing-card-heading">TYPE :</span>{listingType}
+                <div className="d-flex justify-content-between listing-card-body">
+                    <div>
+                        <span className="listing-card-heading">TYPE :</span>{listingType}
+                    </div>
+                    <div>
+                        <span className="listing-card-heading">PARTY NAME :</span>{partyName}
+                    </div>
+                    <div>
+                        <span className="listing-card-heading">CONTACT :</span>{contact}
+                    </div>
+                    <div>
+                        <span className="listing-card-heading">ADDED ON :</span>{moment(createdAt).format("Do MMM, YYYY")}
+                    </div>
+                    <div>
+                        <span className="listing-card-heading">START DATE :</span>{moment(startDate).format("Do MMM, YYYY")}
+                    </div>
+                    <div>
+                        <span className="listing-card-heading">END DATE :</span>{moment(endDate).format("Do MMM, YYYY")}
+                    </div>
+                </div>
             </div>
-            <div>
-                <span className="listing-card-heading">PARTY NAME :</span>{partyName}
-            </div>
-            <div>
-                <span className="listing-card-heading">CONTACT :</span>{contact}
-            </div>
-            <div>
-                <span className="listing-card-heading">ADDED ON :</span>{moment(createdAt).format("Do MMM, YYYY")}
-            </div>
-            <div>
-                <span className="listing-card-heading">START DATE :</span>{moment(startDate).format("Do MMM, YYYY")}
-            </div>
-            <div>
-                <span className="listing-card-heading">END DATE :</span>{moment(endDate).format("Do MMM, YYYY")}
-            </div>
-        </div>
-    </div>
-);
+        );
+    }
+}
 
 export default connect()(Reminder);

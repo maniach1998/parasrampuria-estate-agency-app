@@ -115,11 +115,6 @@ export default class ListingForm extends React.Component {
         this.setState(() => ({ onTheWeb }));
     };
 
-    onCompletedChange = (e) => {
-        const completed = !this.state.completed;
-        this.setState(() => ({ completed }));
-    };
-
     handleStartDateChange = (startDate) => {
         this.setState(() => ({ startDate }));
     };
@@ -347,16 +342,6 @@ export default class ListingForm extends React.Component {
                                 </div>
                                 
                             </div>
-                            {this.props.listing ? (
-                                <div>
-                                <div className="d-flex justify-content-start align-items-center completed-section">
-                                    <span className="form-section-heading">COMPLETED:</span>
-                                    <div className="completed-options">
-                                    <input type="checkbox" name="Completed" value={this.state.completed} onChange={this.onCompletedChange} checked={this.state.completed === true} />
-                                </div>
-                                </div>
-                            </div>
-                            ) : (<div></div>)}
                             
                         <div className="text-center">
                             <button type="submit" value="Submit" className="custom-btn btn shadow-sm">SAVE LISTING</button>

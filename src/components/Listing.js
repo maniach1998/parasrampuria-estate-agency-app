@@ -6,7 +6,7 @@ import { css } from 'glamor';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startRemoveListing } from '../actions/listings';
+import { startRemoveListing, startEditListing } from '../actions/listings';
 
 const notifySuccess = (name) => (
     toast(`❌ Listing '${name}' removed!`, {
@@ -19,6 +19,22 @@ const notifySuccess = (name) => (
         }),
         progressClassName: css({
             background: 'rgb(62, 133, 247)'
+        })
+    })
+);
+
+const notifyChange = (name, change, value) => (
+    toast(`✌🏻Marked '${name}' ${value ? '' : 'not'} ${change}`, {
+        autoClose: 5000,
+        className: css({
+            backgroundColor: 'rgb(232,251,240)'
+        }),
+        bodyClassName: css({
+            fontFamily: 'Raleway Medium',
+            color: 'rgb(42,100,71)'
+        }),
+        progressClassName: css({
+            background: 'rgb(93,176,130)'
         })
     })
 );
@@ -60,7 +76,9 @@ export class Listing extends React.Component {
         super(props);
 
         this.state = {
-            modalIsOpen: false
+            modalIsOpen: false,
+            completed: props.completed,
+            onTheWeb: props.onTheWeb
         };
 
         this.openModal = this.openModal.bind(this);
@@ -97,8 +115,6 @@ export class Listing extends React.Component {
             partyName, 
             contact, 
             deleteValue, 
-            completed, 
-            onTheWeb, 
             startDate, 
             endDate 
         } = this.props;
@@ -109,8 +125,18 @@ export class Listing extends React.Component {
                     {name}
                     <div className="float-right listing-card-options">
                         <Link to={`/edit/${id}`} style={{ color: '#C94343', textDecoration: 'underline' }}>Edit</Link>
-                        <input type="checkbox" disabled={true} checked={completed} />Completed
-                        <input type="checkbox" disabled={true} checked={onTheWeb} />On The Web
+                        <input type="checkbox" defaultChecked={this.state.completed} onChange={() => {
+                            const completed = !this.state.completed;
+                            dispatch(startEditListing(id, { completed }));
+                            this.setState({ completed });
+                            notifyChange(name, 'complete', completed);
+                        }} />Completed
+                        <input type="checkbox" defaultChecked={this.state.onTheWeb} onChange={() => {
+                            const onTheWeb = !this.state.onTheWeb;
+                            dispatch(startEditListing(id, { onTheWeb }));
+                            this.setState({ onTheWeb });
+                            notifyChange(name, 'on the web', onTheWeb);
+                        }} />On The Web
                     </div>
                 </div>
                 <div className="listing-card-body">
