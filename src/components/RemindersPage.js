@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { searchReminder } from '../actions/remindersFilters';
 import Reminders from './Reminders';
 
 class RemindersPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (
@@ -15,15 +19,24 @@ class RemindersPage extends React.Component {
                     </div>
                 </div>
                 <div style={{ marginLeft: 18 }}>
-                    <div>
-                        {/* <button className="btn custom-btn shadow-sm mb-1">ADD REMINDER</button> */}
+                    <div className="d-flex justify-content-between align-items-center mt-2">
                         <Link to="/addReminder" className="btn custom-btn shadow-sm mb-1">ADD REMINDER</Link>
+                        <input placeholder="Search" id="search-bar" title="Search query" className="mx-4 my-2" value={this.props.remindersFilters.text} onChange={(e) => {
+                            this.props.dispatch(searchReminder(e.target.value));
+                        }} />
                     </div>
-                    <div className="mt-3 mb-3" style={{ fontSize: 20 }}>Recent notifications:</div>
+                    <div className="mt-3 mb-1" style={{ fontSize: 20 }}>Recent notifications:</div>
                     <Reminders />
                 </div>
             </div>
-);
-}}
+        );
+    }
+}
 
-export default connect()(RemindersPage);
+const mapStateToProps = (state) => {
+    return {
+        remindersFilters: state.remindersFilters
+    };
+};
+
+export default connect(mapStateToProps)(RemindersPage);

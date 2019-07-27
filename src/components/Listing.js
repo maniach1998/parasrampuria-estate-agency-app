@@ -47,7 +47,7 @@ const modalStyles = {
         fontFamily: "Raleway Bold",
         fontSize: '2em',
         color: '#C94343',
-        padding: '0.3em 0.7em 0.3em 0.8em'
+        padding: '0.2em 0.7em 0.2em 0.8em'
     },
     buttons: {
         display: 'flex',

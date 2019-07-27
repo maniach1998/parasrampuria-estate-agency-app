@@ -1,4 +1,4 @@
-// Reminder Reducer
+// Reminders Reducer
 const remindersReducerDefaultState = [];
 
 export default (state = remindersReducerDefaultState, action) => {

@@ -18,6 +18,8 @@ export class Reminders extends React.Component {
 
     notify = ({ name, endDate }) => (
         toast(`⚠️ '${name}' expires ${moment(endDate).fromNow()}`, {
+            draggable: false,
+            closeOnClick: false,
             className: css({
                 backgroundColor: 'rgb(254, 250, 232)'
             }),
@@ -47,7 +49,7 @@ export class Reminders extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        reminders: selectReminders(state.reminders)
+        reminders: selectReminders(state.reminders, state.remindersFilters)
     };
 };
 
