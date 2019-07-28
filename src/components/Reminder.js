@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { css } from 'glamor';
 import { toast } from 'react-toastify';
+import Modal from 'react-modal';
 import { startRemoveReminder, startEditReminder } from '../actions/reminders';
 import moment from 'moment';
 import Notification from '../images/notification.png';
@@ -21,7 +22,7 @@ const notifyRemoved = (name) => (
             background: 'rgb(237,98,64)'
         })
     })
-)
+);
 
 const notifySeen = (name, seen) => (
     toast(`✌🏻Marked '${name}' as ${seen ? 'Read': 'Unread'}`, {
@@ -37,15 +38,65 @@ const notifySeen = (name, seen) => (
             background: 'rgb(93,176,130)'
         })
     })
-)
+);
+
+const modalStyles = {
+    header: {
+        backgroundColor: '#3C3C3C'
+    },
+    heading: {
+        fontFamily: "Raleway Bold",
+        fontSize: '2em',
+        color: '#C94343',
+        padding: '0.2em 0.7em 0.2em 0.8em'
+    },
+    buttons: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    bodyText: {
+        fontSize: '1.2em',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '0.6em 0'
+    },
+    confirm: {
+        color: '#fff',
+        backgroundColor: '#C94343',
+        padding: '0.5em 1.5em'
+    },
+    cancel: {
+        padding: '0.5em 1.5em'
+    },
+};
 
 class Reminder extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            modalIsOpen: false,
             seen: props.seen
         };
+
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    openModal() {
+        this.setState(() => ({modalIsOpen: true}));
+    }
+
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        this.subtitle.style.color = '#f00';
+    }
+
+    closeModal() {
+        this.setState(() => ({modalIsOpen: false}));
     }
 
     render() {
@@ -59,10 +110,46 @@ class Reminder extends React.Component {
                             <img src={Notification} alt="Notification" style={{ width: 30, marginRight: 20 }} />
                         ) : (<div></div>)}
                         <Link to={`/editRem/${id}`} style={{ color: '#C94343', textDecoration: 'underline', fontSize: 20, fontWeight: 'normal', marginRight: 20 }}>Edit</Link>
-                        <button className="btn border shadow-sm" onClick={() => {
-                                dispatch(startRemoveReminder({ id }));
-                                notifyRemoved(name);
-                        }}>X</button>
+                        <button className="btn border shadow-sm" onClick={this.openModal}>X</button>
+                        <Modal
+                            isOpen={this.state.modalIsOpen}
+                            onAfterOpen={this.afterOpenModal}
+                            onRequestClose={this.closeModal}
+                            contentLabel="Delete Modal"
+                            style={{
+                                content: {
+                                    width: 430,
+                                    height: 195,
+                                    margin: 0,
+                                    padding: 0,
+                                    position: 'absolute',
+                                    left: 0,
+                                    right: 0,
+                                    top: 0,
+                                    bottom: 0,
+                                    margin: 'auto'
+                                }
+                            }}
+                        >
+                            <div>
+                                <div style={modalStyles.header}>
+                                    <div style={modalStyles.heading}>
+                                        WARNING
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style={modalStyles.bodyText}>
+                                        Are you sure you want to delete this reminder?
+                                    </div>
+                                    <div style={modalStyles.buttons}>
+                                    <button className="btn custom-btn shadow-sm mr-2" style={modalStyles.confirm} onClick={() => {
+                                        dispatch(startRemoveReminder({ id })).then(notifyRemoved(name));
+                                    }}>CONFIRM</button>
+                                    <button className="btn custom-btn shadow-sm ml-2" style={modalStyles.cancel} onClick={this.closeModal}>CANCEL</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </Modal>
                     </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-center">
