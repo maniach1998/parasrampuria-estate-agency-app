@@ -230,7 +230,7 @@ export default class ListingForm extends React.Component {
                                             <input type="radio" name="Type" value="1RK" onChange={this.onTypeChange} checked={this.state.listingType === "1RK"} />1RK
                                             <input type="radio" name="Type" value="1BHK" onChange={this.onTypeChange} checked={this.state.listingType === "1BHK"} />1BHK
                                             <input type="radio" name="Type" value="2BHK" onChange={this.onTypeChange} checked={this.state.listingType === "2BHK"} />2BHK
-                                            <input type="radio" name="Type" value="2&amp;1/2 BHK" onChange={this.onTypeChange} checked={this.state.listingType === "2&1/2BHK"} />2&amp;1/2 BHK
+                                            <input type="radio" name="Type" value="2.5BHK" onChange={this.onTypeChange} checked={this.state.listingType === "2.5BHK"} />2.5BHK
                                         </div>
                                         <div className="col d-flex flex-column align-items-center">
                                             <input type="radio" name="Type" value="3BHK" onChange={this.onTypeChange} checked={this.state.listingType === "3BHK"} />3BHK

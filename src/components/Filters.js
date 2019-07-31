@@ -128,7 +128,7 @@ class Filters extends React.Component {
                                 <option value="1RK">1RK</option>
                                 <option value="1BHK">1BHK</option>
                                 <option value="2BHK">2BHK</option>
-                                <option value="2&amp;1/2 BHK">2&amp;1/2BHK</option>
+                                <option value="2.5BHK">2.5BHK</option>
                                 <option value="3BHK">3BHK</option>
                                 <option value="4BHK">4BHK</option>
                                 <option value="Villa">Villa</option>
