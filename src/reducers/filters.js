@@ -4,7 +4,7 @@ const filtersReducerDefaultState = {
     need: [],
     listingType: [],
     priceRange: [0, Infinity],
-    carpetArea: { min: 0, max: 1200 },
+    carpetArea: { min: 0, max: Infinity },
     agency: '',
     sortBy: 'date',
 };

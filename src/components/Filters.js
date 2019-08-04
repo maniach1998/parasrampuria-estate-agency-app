@@ -18,7 +18,7 @@ class Filters extends React.Component {
             need: [],
             listingType: [],
             priceRange: [0, Infinity],
-            carpetArea: { min: 200, max: 800 }
+            carpetArea: { min: 500, max: 2500 }
         };
 
     }
@@ -192,7 +192,7 @@ class Filters extends React.Component {
                         {this.state.carpetAreaChecked ? (
                             <div style={{ marginLeft: 20, marginRight: 20, marginTop: 20 }}>
                             <InputRange
-                                maxValue={1200}
+                                maxValue={5000}
                                 minValue={0}
                                 value={this.state.carpetArea}
                                 onChange={carpetArea => {
