@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ToastContainer, Bounce } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import Header from './Header';
 import NavBar from './NavBar';
 import Filters from './Filters';
@@ -28,6 +28,7 @@ export class HomePage extends React.Component {
                             <div className="d-flex align-content-center">
                                 <p className="listings-head align-middle">
                                     Your Listings
+                                    <span className="text-muted ml-2" style={{ fontSize: '0.7em' }}>({this.props.listings.length})</span>
                                 </p>
                                 <div className="ml-auto">
                                     <button onClick={this.props.startLogout} className="btn custom-btn border shadow-sm" style={{ margin: 0, marginRight: 20 }} >Logout</button>
@@ -42,8 +43,12 @@ export class HomePage extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    listings: state.listings
+});
+
 const mapDispatchToProps = (dispatch) => ({
     startLogout: () => dispatch(startLogout())
 });
 
-export default connect(undefined ,mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps ,mapDispatchToProps)(HomePage);

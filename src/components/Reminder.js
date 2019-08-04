@@ -116,20 +116,7 @@ class Reminder extends React.Component {
                             onAfterOpen={this.afterOpenModal}
                             onRequestClose={this.closeModal}
                             contentLabel="Delete Modal"
-                            style={{
-                                content: {
-                                    width: 430,
-                                    height: 195,
-                                    margin: 0,
-                                    padding: 0,
-                                    position: 'absolute',
-                                    left: 0,
-                                    right: 0,
-                                    top: 0,
-                                    bottom: 0,
-                                    margin: 'auto'
-                                }
-                            }}
+                            style={styles.modalStyle}
                         >
                             <div>
                                 <div style={modalStyles.header}>
@@ -190,5 +177,22 @@ class Reminder extends React.Component {
         );
     }
 }
+
+const styles = {
+    modalStyle: {
+        content: {
+            width: 430,
+            height: 195,
+            margin: 0,
+            padding: 0,
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto'
+        }
+    }
+};
 
 export default connect()(Reminder);
